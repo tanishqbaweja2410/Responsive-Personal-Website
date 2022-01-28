@@ -1,0 +1,470 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+
+/* Global Variables */
+:root{
+    /* fixing header height so that the body apart from the header has margin-top value equal to the header-height */
+    --header-height: 3rem;  
+    /* font weight -> medium thick*/
+    --font-medium: 500;  
+}
+
+/* Colors */
+:root{
+    --home-color: hsl(250, 66%, 75%);
+    --text-color: #697477;
+    --white-color: #FAFAFF;
+    --dark-color: #2A3B47;
+}
+
+/* Font Properties */
+:root{
+    --body-font: 'Montserrat', sans-serif;
+    --small-font-size: .813rem;
+    --big-font-size: 6.25rem;
+    --normal-font-size: .938rem;
+    --h2-font-size: 1.25rem;
+}
+/* for devices with screen size > mobiles,ipads,tablets */
+@media screen and (min-width: 768px){
+    :root{
+        --small-font-size: .875rem;
+        --big-font-size: 10.5rem;
+        --normal-font-size: 1rem;
+        --h2-font-size: 2rem;
+    }
+}
+
+/* Margins */
+:root{
+    /* mb -> margin bottom */
+    --mb1: .5rem;
+    --mb2: 1rem;
+    --mb3: 1.5rem;
+    --mb4: 2rem;
+}
+
+/* z index */
+:root{
+    /* 100 signifying the content to be closer(towards front) to the viewer */
+    --z-fixed: 100;
+}
+
+/* Base */
+*,::before,::after{
+    /* width and height(and min/max properties) includes content, padding and border */
+    box-sizing: border-box; 
+}
+
+/* smooth scrolling */
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    color: var(--text-color);
+    /* recommended line height = 1.6  */
+    line-height: 1.6;  
+}
+h1,h2,p{
+    margin: 0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Section CSS */
+.section{
+    padding: 3rem 0;
+}
+.section-title{
+    position: relative;
+    font-size: var(--h2-font-size);
+    color: var(--dark-color);
+    margin: var(--mb4) 0;
+    text-align: center;
+}
+.section-title::after{
+    position: absolute;
+    content: "";
+    width: 32px;
+    height: .18rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 2rem;
+    background-color: var(--home-color);
+}
+
+/* Layout CSS */
+.bd-grid{
+    max-width: 1024px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-column-gap: 2rem;
+    width: calc(100% - 2rem);
+    margin-left: var(--mb2);
+    margin-right: var(--mb2);
+}
+.header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    background-color: var(--home-color);
+}
+
+/* Navigation Bar CSS */
+.navbar{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media screen and (max-width: 768px){
+    .nav__menu{
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 80%;
+        height: 100%;
+        padding: 2rem;
+        background-color: rgba(255,255,255,.3);
+        transition: .5s;
+        backdrop-filter: blur(10px);
+    }
+}
+.nav_item{
+    margin-bottom: var(--mb4);
+}
+.nav_link{
+    position: relative;
+    color: var(--dark-color);
+}
+.nav_link:hover{
+    color: var(--home-color);
+}
+.my-name{
+    color: var(--white-color);
+}
+.nav__toggle{
+    color: var(--white-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Show Menu */
+.show{
+    right: 0;
+}
+
+/*Active menu*/
+.active::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: .18rem;
+    left: 0;
+    top: 2rem;
+    background-color: var(--home-color);
+}
+
+/* Home */
+.home{
+    position: relative;
+    background-color: var(--home-color);
+    overflow: hidden;
+}
+.home_container{
+    height: calc(100vh - var(--header-height));
+    row-gap: 5rem;
+}
+.home_title{
+    align-self: flex-end;
+    font-size: var(--big-font-size);
+    color: var(--white-color);
+    line-height: .8;
+}
+.home_title span{
+    text-shadow: 0 20px 25px rgba(0,0,0,.5);
+}
+.home_scroll{
+    align-self: flex-end;
+    padding-bottom: var(--mb4);
+}
+.home_scroll-link{
+    writing-mode: vertical-lr;
+    transform: rotate(-180deg);
+    color: var(--white-color);
+}
+.home_img{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 295px;
+}
+
+/* About */
+.about_container{
+    justify-items: center;
+    row-gap: 2rem;
+    text-align: center;
+}
+.about_img{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    width: 120px;
+    height: 120px;
+    background-color: var(--home-color);
+    border-radius: 50%;
+    overflow: hidden;
+}
+.about_img img{
+    width: 100px;
+}
+.about_subtitle{
+    font-size: var(--h2-font-size);
+    color: var(--home-color);
+    margin-bottom: var(--mb1);
+}
+.about_text{
+    margin-bottom: var(--mb4);
+}
+.about_profession{
+    display: block;
+    margin-bottom: var(--mb4);
+}
+.about_social-icon{
+    font-size: 1.4rem;
+    margin: 0 var(--mb1);
+}
+.about_social-icon:hover{
+    color: var(--home-color);
+}
+
+/* Skills */
+.skills_container{
+    row-gap: 2rem;
+    text-align: center;
+}
+.skills_subtitle{
+    margin-bottom: var(--mb2);
+}
+
+.skills_data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    font-weight: var(--font-semi);
+    padding: .5rem 1rem;
+    margin-bottom: var(--mb4);
+    border-radius: .5rem;
+    box-shadow: 0 4px 25px rgba(14,36,49,.15);
+}
+
+.skills_icon{
+    font-size: 2rem;
+    margin-right: var(--mb2);
+    color: var(--home-color);
+}
+
+.skills_name{
+    display: flex;
+    align-items: center;
+}
+.skills_bar{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--home-color);
+    height: .25rem;
+    border-radius: .5rem;
+    z-index: var(--z-fixed);
+}
+.skills_html{
+    width: 90%;
+}
+.skills_css{
+    width: 85%;
+}
+.skills_js{
+    width: 70%;
+}
+.skills_backend{
+    width: 65%;
+}
+.skills_img{
+    border-radius: .5rem;
+}
+
+
+
+/* Hobbies */
+.hobbies{
+    background-color: var(--white-color);
+}
+.hobbies_container{
+    justify-items: center;
+    row-gap: 2rem;
+}
+.hobbies_img{
+    position: relative;
+    overflow: hidden;
+}
+.hobbies_img img{
+    border-radius: .5rem;
+}
+.hobbies_link{
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,.3);
+    border-radius: .5rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: .3s;
+}
+.hobbies_img:hover .hobbies_link{
+    bottom: 0;
+}
+.hobbies_link-name{
+    color: var(--dark-color);
+}
+
+.hobbies_subtitle{
+    margin-top: var(--mb2);
+    margin-bottom: var(--mb2);
+    text-align: center;
+}
+
+.hobbies_img2{
+    margin-top: 5rem;
+}
+
+.hobbies_img3{
+    margin-top: 2.4rem;
+}
+
+
+/* Media Queries */
+
+/* For small devices */
+@media screen and (max-width: 320px) {
+  .home_img {
+    width: 230px;
+  }
+}
+
+@media screen and (min-width: 768px){
+    body{
+        margin: 0;
+    }
+    .section{
+        padding-top: 4rem;
+    }
+    .section-title{
+        margin-bottom: 3rem;
+    }
+    .section-title::after{
+        width: 64px;
+        top: 3rem;
+    }
+
+    .nav{
+        height: calc(var(--header-height) + 1rem);
+    }
+    .nav_list{
+        display: flex;
+    }
+    .nav_item{
+        margin-left: var(--mb4);
+        margin-bottom: 0;
+    }
+    .nav__toggle{
+        display: none;
+    }
+    .nav_link{
+        color: var(--white-color);
+    }
+    .nav_link:hover{
+        color: var(--white-color);
+    }
+    .active::after{
+        background-color: var(--white-color);
+    }
+
+    .home_container{
+        height: 100vh;
+        grid-template-rows: 1.7fr 1fr;
+        row-gap: 0;
+    }
+    .home_img{
+        width: 524px;
+        right: 10%;
+    }
+
+    .about_container{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        text-align: initial;
+        padding: 4rem 0;
+    }
+    .about_img{
+        width: 200px;
+        height: 200px;
+    }
+    .about_img img{
+        width: 165px;
+    }
+
+    .skills_container{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+
+    .hobbies_container{
+        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-rows: repeat(2, 1fr); */
+        column-gap: 2rem;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .bd-grid{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* For tall screens on mobiles y desktop*/
+@media screen and (min-height: 721px) {
+    .home_container {
+        height: 640px;
+    }
+    .home_img {
+        width: 500px;
+        right: 24%;
+    }
+}
